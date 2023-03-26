@@ -6,7 +6,7 @@ const PORT = server.get('port');
 
 (async () => {
     try {
-        const db = await mongoose.connect(config.mongodbURI, {
+        const db = await mongoose.connect(config.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
