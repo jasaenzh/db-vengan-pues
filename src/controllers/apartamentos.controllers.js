@@ -14,6 +14,7 @@ const getApartamentos = async (req, res) => {
 // Crear Apartamento
 const createApartamento = async (req, res) => {
 
+    console.log(req.body)
 
     const {
         numeroApartamento,
@@ -50,6 +51,52 @@ const createApartamento = async (req, res) => {
     if (!numeroApartamento) {
         return res.status(500).json({ message: "El campo Numero de Apartamento" })
     }
+
+    if (typeof areaMts === 'boolean') {
+        return res.status(500).json({ message: "El campo area mts no acepta datos booleanos" })
+    }
+
+    if (typeof precio === 'boolean') {
+        return res.status(500).json({ message: "El campo precio no acepta datos booleanos" })
+    }
+
+    if (typeof habitaciones === 'boolean') {
+        return res.status(500).json({ message: "El campo habitaciones no acepta datos booleanos" })
+    }
+
+    if (typeof camasDobles === 'boolean') {
+        return res.status(500).json({ message: "El campo camas dobles no acepta datos booleanos" })
+    }
+
+    if (typeof camasSencillas === 'boolean') {
+        return res.status(500).json({ message: "El campo camas sencillas no acepta datos booleanos" })
+    }
+
+    if (typeof camaNido === 'boolean') {
+        return res.status(500).json({ message: "El campo camas nido no acepta datos booleanos" })
+    }
+
+    if (typeof banos === 'boolean') {
+        return res.status(500).json({ message: "El campo baños no acepta datos booleanos" })
+    }
+
+    if (typeof secadorCabello === 'boolean') {
+        return res.status(500).json({ message: "El campo secador de cabello no acepta datos booleanos" })
+    }
+
+    if (typeof comedor === 'boolean') {
+        return res.status(500).json({ message: "El campo comedor no acepta datos booleanos" })
+    }
+
+    if (typeof sofaCama === 'boolean') {
+        return res.status(500).json({ message: "El campo sofa cama no acepta datos booleanos" })
+    }
+
+    if (typeof televisor === 'boolean') {
+        return res.status(500).json({ message: "El campo televisor no acepta datos booleanos" })
+    }
+
+
 
     try {
 

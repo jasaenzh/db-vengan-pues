@@ -14,6 +14,12 @@ const apartamentoSchema = new Schema({
     areaMts: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value > 0;
+            },
+            message: "El valor de mts debe ser mayor que cero"
+        }
     },
     precio: {
         type: Number,
@@ -32,22 +38,52 @@ const apartamentoSchema = new Schema({
     habitaciones: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value > 0;
+            },
+            message: "El valor del numero de habitaciones, debe ser mayor que cero"
+        }
     },
     camasDobles: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value >= 0;
+            },
+            message: "El valor de camas dobles debe ser mayor que cero"
+        }
     },
     camasSencillas: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value >= 0;
+            },
+            message: "El valor de camas sencillas debe ser mayor que cero"
+        }
     },
     camaNido: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value >= 0;
+            },
+            message: "El valor de cama Nido debe ser mayor que cero"
+        }
     },
     banos: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value > 0;
+            },
+            message: "El valor de baños debe ser mayor que cero"
+        }
     },
     aguaCaliente: {
         type: Boolean,
@@ -56,6 +92,12 @@ const apartamentoSchema = new Schema({
     secadorCabello: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value >= 0;
+            },
+            message: "El valor de numero de secadores, debe ser mayor que cero"
+        }
     },
     salaEstar: {
         type: Boolean,
@@ -64,14 +106,32 @@ const apartamentoSchema = new Schema({
     comedor: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value > 0;
+            },
+            message: "El valor de comedor, debe ser mayor que cero"
+        }
     },
     sofaCama: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value > 0;
+            },
+            message: "El valor de sofa cama, debe ser mayor que cero"
+        }
     },
     televisor: {
         type: Number,
         require: true,
+        validate: {
+            validator: function (value) {
+                return value > 0;
+            },
+            message: "El valor de televisor, debe ser mayor que cero"
+        }
     },
     internet: {
         type: Boolean,
