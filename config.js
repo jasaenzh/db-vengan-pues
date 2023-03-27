@@ -5,5 +5,5 @@ config();
 
 // Exporta la cadena de conexión a la base de datos MongoDB
 module.exports = {
-    mongodbURI: process.env.MONGODB_URI || 'mongodb://localhost/vengan-pues'
+    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost/vengan-pues'
 }
