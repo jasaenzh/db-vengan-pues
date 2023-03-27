@@ -96,8 +96,6 @@ const createApartamento = async (req, res) => {
         return res.status(500).json({ message: "El campo televisor no acepta datos booleanos" })
     }
 
-
-
     try {
 
         const newApartamento = new Apartamento({
@@ -138,13 +136,66 @@ const createApartamento = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({
-            message: error.message || "Algo salio mal mientras se creaba la tarea"
+            message: `Algo salio mal mientras se creaba la tarea` || error.message
         })
     }
 }
 
+// Obtener apartamentos por Id
+const getApartamentoById = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const apartamento = await Apartamento.findById(id)
+
+        if (!apartamento) {
+            return res.status(404).json({ message: "Apartamento no encontrado" })
+        }
+
+        res.status(200).json(apartamento)
+    } catch (error) {
+        res.status(500).json({
+            message: `El apartamento con id ${id} no pudo ser obtenido` || error.message
+        })
+    }
+}
+
+// Eliminar apartmamento
+const deleteApartamento = async (req, res) => {
+    const { id } = req.params
+    let EliminarApartamento;
+    try {
+        EliminarApartamento = await Apartamento.findByIdAndDelete(id);
+        res.status(200).json({ message: `Apartamento ${EliminarApartamento.numeroApartamento} ha sido eliminado` })
+    } catch (error) {
+        res.status(500).json({
+            message: `El apartamento con id ${id} no existe` || error.message
+        })
+    }
+}
+
+// Actualizar apartamento
+const updateApartamento = async (req, res) => {
+    const { id } = req.params
+
+    let ActualizarApartamento;
+    try {
+        ActualizarApartamento = await Apartamento.findByIdAndUpdate(id, req.body, { new: true });
+        if (!ActualizarApartamento) {
+            return res.status(404).json({ message: `No se encontró el apartamento con id ${id}` });
+        }
+        res.status(200).json({ message: "Apartmanto actualizado" })
+    } catch (error) {
+        res.status(500).json({
+            message: `El apartamento con id ${id} no existe` || error.message
+        })
+    }
+}
 
 module.exports = {
     getApartamentos,
-    createApartamento
+    createApartamento,
+    getApartamentoById,
+    deleteApartamento,
+    updateApartamento
 }
