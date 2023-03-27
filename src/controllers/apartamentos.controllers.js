@@ -1,9 +1,21 @@
 const Apartamento = require("../models/Apartamento.model")
+const { getPagination } = require("../libs/getPagination")
 
 // Obtener Apartamentos
 const getApartamentos = async (req, res) => {
+
+    const { size, page, numeroApartamento } = req.query
+
     try {
-        const obtenerApartamentos = await Apartamento.find();
+
+        const condicion = numeroApartamento
+            ? {
+                numeroApartamento: { $regex: new RegExp(numeroApartamento), $options: "i" }
+            } : {};
+
+        const { limit, offset } = getPagination(page, size)
+
+        const obtenerApartamentos = await Apartamento.paginate(condicion, { offset: offset, limit: limit });
         res.status(200).json(obtenerApartamentos)
 
     } catch (error) {

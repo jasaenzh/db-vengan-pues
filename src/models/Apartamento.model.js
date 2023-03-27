@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const mongosePaginate = require("mongoose-paginate-v2");
 
 const apartamentoSchema = new Schema({
     numeroApartamento: {
@@ -189,6 +190,8 @@ const apartamentoSchema = new Schema({
     versionKey: false,
     timestamps: true,
 })
+
+apartamentoSchema.plugin(mongosePaginate);
 
 const Apartamento = model("Apartamento", apartamentoSchema);
 
