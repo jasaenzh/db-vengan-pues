@@ -26,8 +26,6 @@ const getApartamentos = async (req, res) => {
 // Crear Apartamento
 const createApartamento = async (req, res) => {
 
-    console.log(req.body)
-
     const {
         numeroApartamento,
         ubicacion,
@@ -148,7 +146,7 @@ const createApartamento = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({
-            message: `Algo salio mal mientras se creaba la tarea` || error.message
+            message: error.message || `Algo salio mal mientras se creaba la tarea`
         })
     }
 }

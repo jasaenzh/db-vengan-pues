@@ -27,7 +27,7 @@ const apartamentoSchema = new Schema({
         require: true,
         validate: {
             validator: function (value) {
-                return value > 0;
+                return value >= 0;
             },
             message: "El precio debe ser mayor que cero"
         }
