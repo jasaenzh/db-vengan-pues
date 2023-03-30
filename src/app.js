@@ -9,7 +9,9 @@ app.set('port', process.env.PORT || 3001)
 
 // Middeleware se utiliza para permitir o no peticiones de ciertas URL(IP)
 app.use(cors({
-    origin: ["https://vengan-pues.vercel.app", "http://localhost:3000"]
+    // origin: "https://vengan-pues.vercel.app"
+    origin: "*"
+
 }));
 
 // Middeleware se utiliza para hacer trakin de lo ocuerre en servidor
