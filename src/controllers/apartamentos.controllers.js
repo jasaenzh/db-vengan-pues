@@ -59,7 +59,7 @@ const createApartamento = async (req, res) => {
     } = req.body;
 
     if (!numeroApartamento) {
-        return res.status(500).json({ message: "El campo Numero de Apartamento" })
+        return res.status(500).json({ message: "Falta el campo Numero de Apartamento" })
     }
 
     if (typeof areaMts === 'boolean') {
@@ -146,7 +146,7 @@ const createApartamento = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({
-            message: error.message || `Algo salio mal mientras se creaba la tarea`
+            message: error.message || `Algo salio mal mientras se creaba el apartamento`
         })
     }
 }

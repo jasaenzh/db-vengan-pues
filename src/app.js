@@ -11,7 +11,6 @@ app.set('port', process.env.PORT || 3001)
 app.use(cors({
     origin: "https://vengan-pues.vercel.app"
     // origin: "*"
-
 }));
 
 // Middeleware se utiliza para hacer trakin de lo ocuerre en servidor
